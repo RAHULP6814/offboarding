@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Offboarding Portal</title>
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.mi
+n.css" rel="stylesheet">
+<style>
+:root {
+--primary: #4F46E5;
+--primary-dark: #4338CA;
+--secondary: #10B981;
+--danger: #EF4444;
+--warning: #F59E0B;
+--background: #F3F4F6;
+--card: #FFFFFF;
+--text: #1F2937;
+--text-light: #6B7280;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Inter', sans-serif;
+}
+body {
+background: var(--background);
+color: var(--text);
+min-height: 100vh;
+line-height: 1.6;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 2rem;
+}
+.header {
+text-align: center;
+margin-bottom: 3rem;
+animation: fadeIn 0.8s ease-out;
+}
+.header h1 {
+font-size: 2.5rem;
+color: var(--primary);
+margin-bottom: 1rem;
+}
+.header p {
+color: var(--text-light);
+}
+.form-container {
+background: var(--card);
+border-radius: 20px;
+padding: 2rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+margin-bottom: 2rem;
+animation: slideUp 0.5s ease-out;
+}
+.form-section {
+margin-bottom: 2rem;
+padding: 1.5rem;
+border-radius: 10px;
+background: #F8FAFC;
+border: 1px solid #E2E8F0;
+}
+.form-section h3 {
+color: var(--primary);
+margin-bottom: 1rem;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.form-group {
+margin-bottom: 1.5rem;
+}
+.form-group label {
+display: block;
+margin-bottom: 0.5rem;
+color: var(--text);
+font-weight: 500;
+}
+.input-field,
+textarea {
+width: 100%;
+padding: 0.75rem 1rem;
+border: 1px solid #E2E8F0;
+border-radius: 8px;
+font-size: 1rem;
+transition: all 0.3s ease;
+}
+.input-field:focus,
+textarea:focus {
+outline: none;
+border-color: var(--primary);
+box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+.checkbox-group {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 1rem;
+margin-top: 1rem;
+}
+.checkbox-item {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.checkbox-item input[type="checkbox"] {
+margin-right: 0.5rem;
+}
+.submit-btn {
+width: 100%;
+padding: 1rem;
+background: var(--primary);
+color: white;
+border: none;
+border-radius: 8px;
+font-size: 1rem;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.submit-btn:hover {
+background: var(--primary-dark);
+transform: translateY(-2px);
+}
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+@keyframes slideUp {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+@media (max-width: 768px) {
+.container {
+padding: 1rem;
+}
+.form-section {
+padding: 1rem;
+}
+.checkbox-group {
+grid-template-columns: 1fr;
+}
+.header h1 {
+font-size: 2rem;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>Employee Offboarding Portal</h1>
+<p>Complete your exit process smoothly and efficiently</p>
+</div>
+<div id="advanced-form" class="form-container active">
+<form id="offboardingForm" onsubmit="handleSubmit(event)">
+<div class="form-section">
+<h3><i class="fas fa-code"></i> Technical Details</h3>
+<div class="form-group">
+<label>Development Team</label>
+<div class="input-group">
+<input type="text" class="input-field"
+id="devTeam" required>
+</div>
+</div>
+<div class="form-group">
+<label>Project Handover Details</label>
+<textarea class="input-field" rows="4"
+id="handoverDetails" required
+placeholder="List all ongoing projects, their
+current status, and handover notes"></textarea>
+</div>
+</div>
+<div class="form-section">
+<h3><i class="fas fa-laptop"></i> Technical
+Assets</h3>
+<div class="checkbox-group">
+<div class="checkbox-item">
+<input type="checkbox" id="devMachine"
+required>
+<label>Development Machine Returned</label>
+</div>
+<div class="checkbox-item">
+<input type="checkbox" id="repoAccess"
+required>
+<label>Repository Access Revoked</label>
+</div>
+<div class="checkbox-item">
+<input type="checkbox" id="cloudServices"
+required>
+<label>Cloud Services Deactivated</label>
+</div>
+<div class="checkbox-item">
+<input type="checkbox" id="docUpdated"
+required>
+<label>Documentation Updated</label>
+</div>
+</div>
+</div>
+<div class="form-section">
+<h3><i class="fas fa-key"></i> Access Management</h3>
+<div class="checkbox-group">
+<div class="checkbox-item">
+<input type="checkbox" id="gitAccess"
+required>
+<label>Git Access Removed</label>
+</div>
+<div class="checkbox-item">
+<input type="checkbox" id="dbAccess" required>
+<label>Database Access Revoked</label>
+</div>
+<div class="checkbox-item">
+<input type="checkbox" id="apiKeys" required>
+<label>API Keys Deactivated</label>
+</div>
+</div>
+</div>
+<div class="form-section">
+<h3><i class="fas fa-comments"></i> Knowledge
+Transfer</h3>
+<div class="form-group">
+<label>Technical Documentation</label>
+<textarea class="input-field" rows="4"
+id="techDoc" required
+placeholder="Provide links to updated
+documentation and any crucial technical information"></textarea>
+</div>
+<div class="form-group">
+<label>Improvement Suggestions</label>
+<textarea class="input-field" rows="4"
+id="improvement" placeholder="Share your suggestions for technical
+processes or team improvements"></textarea>
+</div>
+</div>
+<button type="submit" class="submit-btn">
+<i class="fas fa-paper-plane"></i> Submit Technical
+Exit Form
+</button>
+</form>
+</div>
+</div>
+<script>
+function validateForm() {
+const devTeam = document.getElementById("devTeam").value;
+const handoverDetails =
+document.getElementById("handoverDetails").value;
+const techDoc = document.getElementById("techDoc").value;
+const improvement =
+document.getElementById("improvement").value;
+const devTeamRegex = /^[A-Za-z\s]{3,}$/;
+const handoverRegex = /^[A-Za-z\s]{10,}$/;
+const docRegex = /^[A-Za-z\s]{10,}$/;
+if (!devTeamRegex.test(devTeam)) {
+alert("Development Team name must contain only alphabets
+and at least 3 characters.");
+return false;
+}
+if (!handoverRegex.test(handoverDetails)) {
+alert("Project Handover Details must contain at least 10
+characters.");
+return false;
+}
+if (!docRegex.test(techDoc)) {
+alert("Technical Documentation must contain at least 10
+characters.");
+return false;
+}
+if (improvement && !docRegex.test(improvement)) {
+alert("Improvement Suggestions must contain at least 10
+characters.");
+return false;
+}
+const checkboxes =
+document.querySelectorAll('input[type="checkbox"]');
+for (let checkbox of checkboxes) {
+if (!checkbox.checked) {
+alert("Please make sure all checkboxes are checked.");
+return false;
+}
+}
+return true;
+}
+function handleSubmit(event) {
+event.preventDefault();
+if (validateForm()) {
+alert('Exit form submitted successfully!');
+document.getElementById("offboardingForm").reset();
+const checkboxes =
+document.querySelectorAll('input[type="checkbox"]');
+checkboxes.forEach(checkbox => checkbox.checked = false);
+}
+}
+</script>
+</body>
+</html>
